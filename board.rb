@@ -1,6 +1,9 @@
+SIZE = 8
+
 class Board
-    def initialize(size)
-        @rows = Array.new(size) { Array.new(size, nil) }
-        @sentinel = NullPeice
+    attr_reader :rows
+    def initialize
+        @rows = Array.new(SIZE) { Array.new(SIZE, nil) }
+        @sentinel = NullPiece
     end
 end
