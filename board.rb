@@ -33,6 +33,21 @@ class Board
         rows[i][j] = piece
     end
 
+    def move_piece(start_pos, end_pos)
+        piece = self[start_pos]
+        raise "No piece in #{start_pos}" piece.empty?
+
+        if piece.color != curr_color
+            raise "You can't control your opponents pieces!"
+        elsif !piece.moves.include?(end_pos)
+            raise "This piece doesn't move like this"
+        elsif !piece.valid_moves.include?(end_pos)
+            raise "You can't move your piece to this position"
+        end
+
+        move_piece!(start_pos, end_pos)
+    end
+
     private
     attr_reader :sentinel
 
