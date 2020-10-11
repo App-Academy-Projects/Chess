@@ -15,6 +15,24 @@ class Board
         end
     end
 
+    def valid_pos?(pos)
+        pos.all? { |coord| coord.between?(0, 7) }
+    end
+
+    def [](pos)
+        raise 'invalid pos' unless valid_pos?(pos)
+
+        i, j = pos
+        rows[i][j]
+    end
+
+    def [](pos, piece)
+        raise 'invalid pos' unless valid_pos?(pos)
+
+        i, j = pos
+        rows[i][j] = piece
+    end
+
     private
     attr_reader :sentinel
 
