@@ -39,6 +39,9 @@ class Board
         self[pos] = piece
     end
 
+    def pieces
+        @rows.flatten.reject(&:empty?)
+    end
 
     def move_piece(color, start_pos, end_pos)
         piece = self[start_pos]
