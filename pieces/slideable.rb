@@ -27,6 +27,8 @@ module Slideable
         move_dirs.each do |dx, dy|
             moves += grow_unblocked_moves_in_dir(dx, dy)
         end
+        
+        moves
     end
     
     private
