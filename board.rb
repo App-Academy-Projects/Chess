@@ -33,11 +33,11 @@ class Board
         rows[i][j] = piece
     end
 
-    def move_piece(start_pos, end_pos)
+    def move_piece(color, start_pos, end_pos)
         piece = self[start_pos]
         raise "No piece in #{start_pos}" piece.empty?
 
-        if piece.color != curr_color
+        if piece.color != color
             raise "You can't control your opponents pieces!"
         elsif !piece.moves.include?(end_pos)
             raise "This piece doesn't move like this"
@@ -45,11 +45,12 @@ class Board
             raise "You can't move your piece to this position"
         end
 
-        move_piece!(start_pos, end_pos)
+        move_piece!(color, start_pos, end_pos)
     end
 
-    def move_piece!(start_pos, end_pos)
+    def move_piece!(color, start_pos, end_pos)
         piece = self[start_pos]
+        raise "You can't control your opponents pieces!" if piece.color != color
         raise "This piece doesn't move like this" unless piece.moves.include?(end_pos)
 
         self[end_pos] = piece
