@@ -33,6 +33,13 @@ class Board
         rows[i][j] = piece
     end
 
+    def add_piece(piece, pos)
+        raise "This position isn't empty" unless self[pos].empty?
+
+        self[pos] = piece
+    end
+
+
     def move_piece(color, start_pos, end_pos)
         piece = self[start_pos]
         raise "No piece in #{start_pos}" piece.empty?
