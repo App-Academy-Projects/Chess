@@ -43,9 +43,17 @@ class Board
         @rows.flatten.reject(&:empty?)
     end
 
+    def dup
+        new_board = Board.new
+
+        pieces.each do |piece|
+            piece.new(piece.color, new_board, piece.pos)
+        end
+    end
+
     def move_piece(color, start_pos, end_pos)
         piece = self[start_pos]
-        raise "No piece in #{start_pos}" piece.empty?
+        raise "No piece in #{start_pos}" if piece.empty?
 
         if piece.color != color
             raise "You can't control your opponents pieces!"
