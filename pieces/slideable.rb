@@ -20,4 +20,9 @@ module Slideable
     def diagonal_dirs
         DIAGONAL_DIRS
     end
+
+    def move_dirs
+        # Each Subclass should implement this method!
+        raise NotImplementedError
+    end
 end
