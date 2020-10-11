@@ -20,18 +20,20 @@ module Slideable
     def diagonal_dirs
         DIAGONAL_DIRS
     end
-
-    def move_dirs
-        # Each Subclass should implement this method!
-        raise NotImplementedError
-    end
-
+    
     def moves
         moves = []
-
+        
         move_dirs.each do |dx, dy|
             moves += grow_unblocked_moves_in_dir(dx, dy)
         end
+    end
+    
+    private
+    
+    def move_dirs
+        # Each Subclass should implement this method!
+        raise NotImplementedError
     end
 
     def grow_unblocked_moves_in_dir(dx, dy)
