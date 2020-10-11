@@ -47,7 +47,7 @@ class Board
         new_board = Board.new
 
         pieces.each do |piece|
-            piece.new(piece.color, new_board, piece.pos)
+            (piece.class).new(piece.color, new_board, piece.pos)
         end
     end
 
