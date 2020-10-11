@@ -51,6 +51,11 @@ class Board
         end
     end
 
+    def find_king(color)
+        king_pos = pieces.find { |piece| piece.color == color && piece.is_a?(King) }
+        king_pos || raise "King not found!"
+    end
+
     def move_piece(color, start_pos, end_pos)
         piece = self[start_pos]
         raise "No piece in #{start_pos}" if piece.empty?
