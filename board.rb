@@ -1,4 +1,4 @@
-require_relative 'null_piece'
+require_relative 'pieces'
 
 SIZE = 8
 COLORS = [:white, :black]
@@ -23,14 +23,14 @@ class Board
         raise 'invalid pos' unless valid_pos?(pos)
 
         i, j = pos
-        rows[i][j]
+        @rows[i][j]
     end
 
-    def [](pos, piece)
+    def []=(pos, piece)
         raise 'invalid pos' unless valid_pos?(pos)
 
         i, j = pos
-        rows[i][j] = piece
+        @rows[i][j] = piece
     end
 
     def add_piece(piece, pos)
@@ -53,7 +53,7 @@ class Board
 
     def find_king(color)
         king_pos = pieces.find { |piece| piece.color == color && piece.is_a?(King) }
-        king_pos || raise "King not found!"
+        king_pos || (raise "King not found!")
     end
 
     def move_piece(color, start_pos, end_pos)
