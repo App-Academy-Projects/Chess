@@ -6,17 +6,6 @@ class Queen < Piece
     include Slideable
 
     def symbol
-        '♚'.colorize(color)
-    end
-
-    def move_diffs
-        [[-1, -1],
-        [1, 1],
-        [-1, 0],
-        [0, -1],
-        [-1, 1],
-        [1, -1],
-        [0, 1],
-        [1, 0]]
+        '♛'.colorize(color)
     end
 end
