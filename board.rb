@@ -48,6 +48,15 @@ class Board
         move_piece!(start_pos, end_pos)
     end
 
+    def move_piece!(start_pos, end_pos)
+        piece = self[start_pos]
+        raise "This piece doesn't move like this" unless piece.moves.include?(end_pos)
+
+        self[end_pos] = piece
+        self[start_pos] = sentinel
+        piece.pos = end_pos
+    end
+
     private
     attr_reader :sentinel
 
