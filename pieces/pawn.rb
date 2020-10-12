@@ -15,4 +15,8 @@ class Pawn < Piece
             pos[0] == 1
         end
     end
+
+    def forward_dir
+        color == :white ? 1 : -1
+    end
 end
