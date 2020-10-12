@@ -11,6 +11,10 @@ class Piece
         " #{symbol} "
     end
 
+    def empty?
+        false
+    end
+
     def symbol
         # Each Subclass should implement this method!
         raise NotImplementedError
