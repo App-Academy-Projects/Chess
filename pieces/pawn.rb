@@ -30,4 +30,19 @@ class Pawn < Piece
         steps << two_stp if at_start_row? && board.empty(two_stp)
         steps
     end
+
+    def side_attacks
+        i, j = pos
+
+        side_moves = [[i + forward_dir, j - 1], [i + forward_dir, j + 1]]
+        selected_moves = []
+        side_moves.each do |new_pos|
+            next false unless board.valid_pos?(new_pos)
+            next false if board.empty?(new_pos)
+
+            attacked_piece = board[new_pos]
+            selected_moves << new_pos if attacked_piece && attacked_piece.color != color
+        end
+        selected_moves
+    end
 end
