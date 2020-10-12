@@ -8,6 +8,17 @@ class Display
         @board = board
     end
 
+    def build_grid
+        @board.rows.map.with_index{ |row, i| build_row(row, i) }
+    end
+
+    def build_row(row, i)
+        row.map.with_index do |peice, j|
+            background = colors_at(i, j)
+            peice.to_s.colorize(background)
+        end
+    end
+
     def colors_at(i, j)
         pos = cursor.cursor_pos
         if pos == [i, j] && cursor.selected
@@ -19,5 +30,11 @@ class Display
         else
             background = :white
         end
+    end
+
+    def render
+        system("clear")
+        pos = @cursor.cursor_pos
+        "#{@board[pos]}".
     end
 end
