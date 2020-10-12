@@ -33,8 +33,12 @@ class Board
         @rows[i][j] = piece
     end
 
+    def empty?(pos)
+        self[pos].empty?
+    end
+
     def add_piece(piece, pos)
-        raise "This position isn't empty" unless self[pos].empty?
+        raise "This position isn't empty" unless empty?(pos)
 
         self[pos] = piece
     end
@@ -57,9 +61,9 @@ class Board
     end
 
     def move_piece(color, start_pos, end_pos)
-        piece = self[start_pos]
-        raise "No piece in #{start_pos}" if piece.empty?
+        raise "No piece in #{start_pos}" if empty?(start_pos)
 
+        piece = self[start_pos]
         if piece.color != color
             raise "You can't control your opponents pieces!"
         elsif !piece.moves.include?(end_pos)
