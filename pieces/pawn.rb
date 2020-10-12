@@ -6,7 +6,7 @@ class Pawn < Piece
         '♟'.colorize(color)
     end
 
-    def move_dirs
+    def moves
         forward_steps + side_attacks
     end
 

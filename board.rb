@@ -67,8 +67,6 @@ class Board
         if piece.color != color
             raise "You can't control your opponents pieces!"
         elsif !piece.moves.include?(end_pos)
-            raise "This piece doesn't move like this"
-        elsif !piece.valid_moves.include?(end_pos)
             raise "You can't move your piece to this position"
         end
 

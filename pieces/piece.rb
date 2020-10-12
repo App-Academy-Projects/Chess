@@ -21,4 +21,9 @@ class Piece
         # Each Subclass should implement this method!
         raise NotImplementedError
     end
+
+    def moves
+        # Each Subclass should implement this method!
+        raise NotImplementedError
+    end
 end
