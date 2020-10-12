@@ -15,7 +15,7 @@ class Display
     def build_row(row, i)
         row.map.with_index do |peice, j|
             background = colors_at(i, j)
-            peice.to_s.colorize(background)
+            peice.to_s.colorize(:background => background)
         end
     end
 
@@ -26,15 +26,15 @@ class Display
         elsif pos == [i, j]
             background = :light_red
         elsif (i+j).even?
-            background = :black
+            background = :light_black
         else
-            background = :white
+            background = :light_yellow
         end
     end
 
     def render
         system("clear")
-        pos = @cursor.cursor_pos
-        "#{@board[pos]}".
+        build_grid.each { |row| puts row.join }
+        nil
     end
 end
