@@ -6,6 +6,10 @@ class Pawn < Piece
         '♟'.colorize(color)
     end
 
+    def move_dirs
+        forward_steps + side_attacks
+    end
+
     private
 
     def at_start_row?
