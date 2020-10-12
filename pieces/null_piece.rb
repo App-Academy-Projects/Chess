@@ -13,4 +13,8 @@ class NullPiece < Piece
     def empty?
         true
     end
+    
+    def moves
+        []
+    end
 end
