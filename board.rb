@@ -83,6 +83,25 @@ class Board
         piece.pos = end_pos
     end
 
+    def other_color(color)
+        :white == color ? :black : :white
+    end
+
+    def in_check?(color)
+        king_pos = find_king(color)
+        pieces.any? do |piece|
+            piece.moves.include?(king_pos)
+        end
+        false
+    end
+
+    def checkmate?(color)
+        return false unless in_check?(color)
+        pieces.select { |p| p.color == color }.all? do |piece|
+            piece.valid_moves.empty?
+        end
+    end
+
     private
     attr_reader :sentinel
 
