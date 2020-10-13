@@ -14,9 +14,9 @@ class Pawn < Piece
 
     def at_start_row?
         if :white == color
-            pos[0] == 6
-        else
             pos[0] == 1
+        else
+            pos[0] == 6
         end
     end
 
@@ -31,7 +31,7 @@ class Pawn < Piece
 
         steps = [one_stp]
         two_stp = [i + 2 * forward_dir, j]
-        steps << two_stp if at_start_row? && board.empty(two_stp)
+        steps << two_stp if at_start_row? && board.empty?(two_stp)
         steps
     end
 
