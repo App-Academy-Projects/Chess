@@ -9,14 +9,19 @@ class HumanPlayer < Player
             display.render
 
             if start_pos
-                promt_input
+                prompt_input
                 end_pos = display.cursor.get_input
             else
-                promt_input
+                prompt_input
                 start_pos = display.cursor.get_input
             end
         end
 
         [start_pos, end_pos]
+    end
+
+    def prompt_input
+        puts "It's #{color}'s turn!"
+        print "Enter a move: "
     end
 end
