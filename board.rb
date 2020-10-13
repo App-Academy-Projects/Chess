@@ -68,6 +68,8 @@ class Board
             raise "You can't control your opponents pieces!"
         elsif !piece.moves.include?(end_pos)
             raise "You can't move your piece to this position"
+        elsif !piece.valid_moves.include?(end_pos)
+            raise "Tou can't move into a check position"
         end
 
         move_piece!(color, start_pos, end_pos)
@@ -75,9 +77,7 @@ class Board
 
     def move_piece!(color, start_pos, end_pos)
         piece = self[start_pos]
-        raise "You can't control your opponents pieces!" if piece.color != color
         raise "This piece doesn't move like this" unless piece.moves.include?(end_pos)
-        raise "You cann't move into check" unless piece.valid_moves.include?(end_pos)
       
         self[end_pos] = piece
         self[start_pos] = sentinel
