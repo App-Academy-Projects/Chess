@@ -5,10 +5,11 @@ COLORS = [:white, :black]
 
 class Board
     attr_reader :rows
-    def initialize
+    def initialize(fill_board = true)
         @sentinel = NullPiece.instance
         @rows = Array.new(SIZE) { Array.new(SIZE, @sentinel) }
 
+        return unless fill_board
         COLORS.each do |color|
             fill_back_row(color)
             fill_pawns_row(color)
@@ -48,11 +49,12 @@ class Board
     end
 
     def dup
-        new_board = Board.new
+        new_board = Board.new(false)
 
         pieces.each do |piece|
             (piece.class).new(piece.color, new_board, piece.pos)
         end
+        new_board
     end
 
     def find_king(color)
@@ -68,8 +70,8 @@ class Board
             raise "You can't control your opponents pieces!"
         elsif !piece.moves.include?(end_pos)
             raise "You can't move your piece to this position"
-        elsif !piece.valid_moves.include?(end_pos)
-            raise "Tou can't move into a check position"
+        else
+            p piece.valid_moves
         end
 
         move_piece!(color, start_pos, end_pos)
@@ -93,7 +95,6 @@ class Board
         pieces.any? do |piece|
             piece.moves.include?(king_pos)
         end
-        false
     end
 
     def checkmate?(color)
