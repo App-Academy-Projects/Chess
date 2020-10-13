@@ -83,12 +83,15 @@ class Cursor
   def handle_key(key)
     case key
     when :return, :space
-      return @cursor_pos
+      toggle_selected
+      @cursor_pos
     when :left, :right, :up, :down
       update_pos(MOVES[key])
-      return nil
+      nil
     when :ctrl_c
       Process.exit(0)
+    else
+      puts "#{key} is invalid input"
     end
   end
 
