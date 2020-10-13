@@ -11,9 +11,11 @@ class HumanPlayer < Player
             if start_pos
                 prompt_input
                 end_pos = display.cursor.get_input
+                display.reset! if end_pos
             else
                 prompt_input
                 start_pos = display.cursor.get_input
+                display.reset! if start_pos
             end
         end
 
