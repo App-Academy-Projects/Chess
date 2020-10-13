@@ -1,4 +1,6 @@
 require_relative 'board'
+require_relative 'display'
+require_relative 'human_player'
 
 class Game
     attr_reader :board, :display, :players, :cur_player

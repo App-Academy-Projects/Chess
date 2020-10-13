@@ -22,6 +22,6 @@ class HumanPlayer < Player
 
     def prompt_input
         puts "It's #{color}'s turn!"
-        print "Enter a move: "
+        puts "Enter a move"
     end
 end
