@@ -30,4 +30,12 @@ class Piece
         # Each Subclass should implement this method!
         raise NotImplementedError
     end
+
+    private
+
+    def move_into_check?(end_pos)
+        tmp_board = board.dup
+        tmp_board.move_piece!(pos, end_pos)
+        tmp_board.in_check?(color)
+    end
 end
