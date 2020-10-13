@@ -70,8 +70,8 @@ class Board
             raise "You can't control your opponents pieces!"
         elsif !piece.moves.include?(end_pos)
             raise "You can't move your piece to this position"
-        else
-            p piece.valid_moves
+        elsif !piece.valid_moves.include?(end_pos)
+            raise "Can't move in a checkmate position"
         end
 
         move_piece!(color, start_pos, end_pos)
@@ -86,14 +86,10 @@ class Board
         piece.pos = end_pos
     end
 
-    def other_color(color)
-        :white == color ? :black : :white
-    end
-
     def in_check?(color)
-        king_pos = find_king(color)
+        king_pos = find_king(color).pos
         pieces.any? do |piece|
-            piece.moves.include?(king_pos)
+            piece.color != color && piece.moves.include?(king_pos)
         end
     end
 
