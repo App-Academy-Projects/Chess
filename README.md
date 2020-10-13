@@ -23,7 +23,7 @@
 ## Introduction
 In this project I built a Chess game :D
 
-<img alt="Chess" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Ftimesofindia.indiatimes.com%2Fsports%2Fchess%2Fsay-chess-but-only-if-you-have-the-money-to-spend%2Farticleshow%2F71536534.cms&psig=AOvVaw34ybx1pTfgoWMwFTDN1D6A&ust=1602711125154000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPD_lLLCsuwCFQAAAAAdAAAAABAS" width="500">
+<img alt="Chess" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Chess_board_opening_staunton.jpg" width="500">
 
 ## Usage 
 
