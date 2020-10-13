@@ -35,7 +35,7 @@ class Piece
 
     def move_into_check?(end_pos)
         tmp_board = board.dup
-        tmp_board.move_piece!(pos, end_pos)
+        tmp_board.move_piece!(color, pos, end_pos)
         tmp_board.in_check?(color)
     end
 end
