@@ -77,7 +77,8 @@ class Board
         piece = self[start_pos]
         raise "You can't control your opponents pieces!" if piece.color != color
         raise "This piece doesn't move like this" unless piece.moves.include?(end_pos)
-
+        raise "You cann't move into check" unless piece.valid_moves.include?(end_pos)
+      
         self[end_pos] = piece
         self[start_pos] = sentinel
         piece.pos = end_pos
