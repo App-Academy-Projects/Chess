@@ -25,8 +25,10 @@ class Game
                 @display.notifications[:error] = exception.message
                 retry
             end
-            puts "#{cur_player} is checkmated!"
         end
+        display.render
+        puts "#{cur_player} is checkmated!"
+        nil
     end
 
     def swap_turn!
@@ -34,7 +36,7 @@ class Game
     end
 
     def notify_players
-        if board.in_check(cur_player)
+        if board.in_check?(cur_player)
             display.set_check!
         else
             display.uncheck!
