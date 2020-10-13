@@ -26,4 +26,8 @@ class Game
             puts "#{cur_player} is checkmated!"
         end
     end
+
+    def swap_turn!
+        @cur_player = cur_player == :white ? :black : :white
+    end
 end
