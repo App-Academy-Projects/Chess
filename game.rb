@@ -30,4 +30,12 @@ class Game
     def swap_turn!
         @cur_player = cur_player == :white ? :black : :white
     end
+
+    def notify_players
+        if board.in_check(cur_player)
+            puts "In check!"
+        else
+            puts "Not in check"
+        end
+    end
 end
